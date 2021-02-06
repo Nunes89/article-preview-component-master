@@ -20,6 +20,11 @@
 }
 
 body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     margin: 0;
     padding: 0;
     font-size: 13px;
@@ -29,7 +34,6 @@ body {
 
 .article-card {
     max-width: 90vw;
-    margin: 20vw auto;
     border-radius: var(--rounded_corner);
     margin-bottom: 10px;
     background-color: #ffffff;
@@ -105,4 +109,51 @@ body {
     background-image: url("../images/icon-share.svg");
     background-repeat: no-repeat;
     background-position: 70% 50%;
+}
+
+@media only screen and (min-width: 600px) {
+    .article-card {
+        max-width: 580px;
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 1fr auto;
+        grid-template-areas:
+            "image content"
+            "image footer";
+    }
+
+    .article-card .image {
+        grid-area: image;
+        width: 250px;
+        height: 100%;
+        background-position: 0 0;
+        border-radius: var(--rounded_corner) 0 0 var(--rounded_corner);
+    }
+
+    .article-card>.content {
+        grid-area: content;
+        padding-bottom: 0;
+    }
+
+    .article-card>.footer {
+        grid-area: "footer";
+        padding-bottom: 30px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .article-card {
+        max-width: 725px;
+    }
+
+    .article-card .image {
+        width: 275px;
+        height: 100%;
+    }
+
+    .article-card>.content>.title {
+        font-size: 1.4rem;
+        margin: 0;
+    }
 }
